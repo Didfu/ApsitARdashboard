@@ -35,6 +35,14 @@
       color: #00b4d8;
     }
 
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      background-color: white; /* Set color for the hamburger icon */
+    }
+
     .btn-light {
       background-color: #00b4d8;
       color: #fff;
@@ -43,7 +51,6 @@
 
     section#hero {
       position: relative;
-      height: 50vh; /* Set to 50% of the viewport height */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -142,7 +149,8 @@
     <a class="navbar-brand" href="/">
       <img src="apsit.png" alt="APSIT Logo">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
