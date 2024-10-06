@@ -9,6 +9,7 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
   <style>
+    /* Global Styling */
     body {
       font-family: Arial, sans-serif;
       background-color: #f4f4f9;
@@ -17,31 +18,29 @@
       padding: 0;
     }
 
-    nav.navbar {
+    /* Navbar */
+    header {
       background-color: #1e1e2f;
+      padding: 10px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    nav.navbar .navbar-brand img {
+    header .logo img {
       max-width: 80px;
     }
 
-    nav.navbar a.nav-link,
-    nav.navbar a.navbar-brand {
+    header .nav a {
       color: #f4f4f9;
       font-weight: bold;
+      padding: 10px 15px;
     }
 
-    nav.navbar a.nav-link:hover {
+    header .nav a:hover {
       color: #00b4d8;
     }
 
-    .btn-light {
-      background-color: #00b4d8;
-      color: #fff;
-      border: none;
-    }
-
-    section#hero {
+    /* Hero Section */
+    .section1 {
       position: relative;
       height: 100vh;
       display: flex;
@@ -49,84 +48,83 @@
       justify-content: center;
       color: white;
       text-align: center;
-      overflow: hidden;
+      background-color: #1e1e2f;
     }
 
-    section#hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 1;
+    .section1 h1 {
+      font-size: 3rem;
     }
 
-    #hero video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
-      z-index: 0;
-      object-fit: cover;
+    .section1 h2 {
+      font-size: 1.5rem;
+      margin-top: 10px;
+      color: #00b4d8;
     }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
+    .section1 a.button {
+      background-color: #00b4d8;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-top: 20px;
     }
 
-    section#features {
+    .section1 a.button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Features Section */
+    .section2 {
       padding: 60px 0;
+      background-color: #f4f4f9;
+      text-align: center;
     }
 
-    section#features h2 {
+    .section2 h2 {
       color: #00b4d8;
       margin-bottom: 40px;
     }
 
-    .card {
+    .feature-block {
       border: none;
       transition: transform 0.3s ease-in-out;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      background-color: white;
     }
 
-    .card:hover {
+    .feature-block:hover {
       transform: translateY(-5px);
     }
 
-    .card h3 {
-      color: #333;
+    .feature-details h3 {
       font-size: 1.2rem;
+      color: #333;
     }
 
-    .card p {
+    .feature-details p {
       color: #666;
     }
 
-    .chatbot-container {
-      border-radius: 10px;
-    }
-
-    .chat-header h2 {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-
-    #faq {
+    /* FAQ Section */
+    .faq-container {
       background: #1e1e2f;
       color: white;
       padding: 60px 0;
     }
 
-    .accordion .card-header {
-      background: #00b4d8;
+    .faq-item .faq-question {
+      font-weight: bold;
+      color: #00b4d8;
+      cursor: pointer;
+    }
+
+    .faq-item .faq-answer {
       color: white;
     }
 
+    /* Footer */
     footer {
       background-color: #1e1e2f;
       color: white;
@@ -137,16 +135,16 @@
 </head>
 
 <body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="/">
-      <img src="apsit.png" alt="APSIT Logo">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="logo">
+        <a class="navbar-brand" href="#">
+          <img src="apsit.png" alt="APSIT Logo">
+        </a>
+      </div>
+      <ul class="nav ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="#">Solutions</a>
         </li>
@@ -154,44 +152,38 @@
           <a class="nav-link" href="#">Resources</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/signin.html">APSIT Access</a>
+          <a class="nav-link" href="signin.html">APSIT Access</a>
         </li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- Hero Section with Video Background -->
-  <section id="hero">
-    <video autoplay muted loop>
-      <source src="homepage.mp4" type="video/mp4">
-      Your browser does not support HTML5 video.
-    </video>
-    <div class="hero-content">
-      <h1>AR APSIT</h1>
-      <p>Revolutionizing navigation within APSIT using AR technology</p>
-      <a href="#" class="btn btn-light mt-4">Get Started</a>
-    </div>
+  <!-- Hero Section -->
+  <section class="section1" id="hero">
+    <h1>AR APSIT</h1>
+    <h2>AR NAVIGATION SYSTEM</h2>
+    <a href="#" class="button" onclick="scrollToFeatures()">Get Started</a>
   </section>
 
   <!-- Features Section -->
-  <section id="features">
+  <section class="section2" id="features">
+    <h2>Our Features</h2>
     <div class="container">
-      <h2 class="text-center">Our Features</h2>
       <div class="row">
-        <div class="col-md-6 mb-4">
-          <a href="ar://" class="card">
-            <img src="ar.png" alt="AR Navigation" class="card-img-top img-fluid">
-            <div class="card-body">
-              <h3 class="card-title">AR Navigation</h3>
+        <div class="col-md-6">
+          <a href="ar://" class="feature-block">
+            <img src="ar.png" alt="AR Navigation" class="img-fluid">
+            <div class="feature-details">
+              <h3>AR Navigation</h3>
               <p>Seamless indoor navigation within APSIT campus with augmented reality.</p>
             </div>
           </a>
         </div>
-        <div class="col-md-6 mb-4">
-          <a href="https://apsitwiki.onrender.com" target="_blank" class="card">
-            <img src="bookicon.png" alt="APSIT Wiki" class="card-img-top img-fluid">
-            <div class="card-body">
-              <h3 class="card-title">APSIT Wiki</h3>
+        <div class="col-md-6">
+          <a href="https://apsitwiki.onrender.com" target="_blank" class="feature-block">
+            <img src="bookicon.png" alt="APSIT Wiki" class="img-fluid">
+            <div class="feature-details">
+              <h3>APSIT Wiki</h3>
               <p>Comprehensive resources for APSIT students at your fingertips.</p>
             </div>
           </a>
@@ -201,24 +193,22 @@
   </section>
 
   <!-- FAQ Section -->
-  <section id="faq">
+  <section class="faq-container" id="faq">
+    <h2 class="text-center mb-5">Frequently Asked Questions</h2>
     <div class="container">
-      <h2 class="text-center mb-5">Frequently Asked Questions</h2>
-      <div class="accordion" id="faqAccordion">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h5>
-              <button class="btn btn-link text-white" type="button" data-toggle="collapse" data-target="#collapseOne">
-                What is the AR-APSIT navigation system?
-              </button>
-            </h5>
-          </div>
-          <div id="collapseOne" class="collapse show" data-parent="#faqAccordion">
-            <div class="card-body text-dark">
-              AR-APSIT navigation is an augmented reality system that helps users find their way within the APSIT campus.
-            </div>
-          </div>
+      <div class="faq-item">
+        <h3 class="faq-question">What is the AR-APSIT navigation system?</h3>
+        <div class="faq-answer">AR-APSIT navigation is an augmented reality system that helps users find their way
+          within the APSIT campus.
         </div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">How does the AR-APSIT navigation system work?</h3>
+        <div class="faq-answer">It uses AR technology combined with GPS to help users navigate within the campus.</div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-question">Do I need an internet connection?</h3>
+        <div class="faq-answer">Yes, an internet connection is required for real-time navigation and updates.</div>
       </div>
     </div>
   </section>
@@ -228,9 +218,22 @@
     <p>&copy; 2024 AR-APSIT.ai All rights reserved.</p>
   </footer>
 
+  <!-- Optional JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Smooth Scroll Function -->
+  <script>
+    function scrollToFeatures() {
+      const featuresSection = document.getElementById("features");
+      featuresSection.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
+  </script>
+
 </body>
 
 </html>
