@@ -235,6 +235,80 @@
       text-align: center;
       padding: 20px 0;
     }
+    .button {
+      display: inline-block;
+      padding: 15px 30px;
+      background-color: #f0b90b;
+      color: #14213d;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    
+    .button:hover {
+      background-color: #ffc107;
+    }
+    
+    .section2 {
+      text-align: center;
+      padding: 50px 0;
+    }
+    
+    .section2 h2 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    
+    .section2 p {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+    }
+    
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    
+    .feature-block {
+      text-align: center;
+      border: 2px solid white;
+      border-radius: 15px;
+      overflow: hidden;
+      flex-basis: 300px;
+      width: 300px;
+      transition: transform 0.3s ease;
+      background-color: #ffffff12;
+    }
+    
+    .feature-block:hover {
+      transform: translateY(-10px);
+    }
+    
+    .feature-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .feature-details {
+      padding: 20px;
+      color: aqua;
+    }
+    
+    .feature-details h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .feature-details p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
 
     /* Additional styles */
     /* ... */
@@ -321,7 +395,7 @@
               <img src="bookicon.png" alt="APSIT Wiki">
             </div>
             <div class="feature-details">
-              <h3>APSIT-WIKI</h3>
+              <h3>APSIT-WIKI</h3>        
               <p>APSITwiki is an online platform dedicated to providing academic resources for APSIT students.</p>
             </div>
           </a>
@@ -329,6 +403,36 @@
       </div>
     </div>
   </section>
+  <hr>
+  <section class="section2" id="features">
+    <h2>Our Features</h2>
+    <p>AR-APSIT.ai offers a wide range of features to enhance your indoor experience.</p>
+
+    <div class="container">
+      <!-- AR Navigation feature available to all -->
+      <a href="ar://" class="feature-block">
+        <div class="feature-image">
+          <img src="ar.png" alt="ar">
+        </div>
+        <div class="feature-details">
+          <h3>AR NAVIGATION</h3>
+          <p>The AR Navigation System is designed to enhance navigation within the college premises.</p>
+        </div>
+      </a>
+
+      <!-- APSIT-Wiki link shown only to authenticated users -->
+      <div id="wiki-feature" class="feature-block" style="display: none;">
+        <a href="https://apsitwiki.onrender.com" target="_blank" id="wiki-link">
+          <div class="feature-image">
+            <img src="bookicon.png" alt="apsitwiki">
+          </div>
+          <div class="feature-details">
+            <h3>APSIT-WIKI</h3>
+            <p>APSITwiki is an online platform dedicated to providing academic resources for APSIT students.</p>
+          </div>
+        </a>
+      </div>
+    </div>
 
   <!-- Chatbot Toggler -->
   <button id="chatbot-toggler" class="btn btn-primary" style="position: fixed; bottom: 25px; right: 10px;">
