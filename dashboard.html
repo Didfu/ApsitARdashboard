@@ -5,42 +5,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AR APSIT</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Icons -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+  <!-- Custom CSS -->
   <style>
-    /* Global Styling */
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #f4f4f9;
       color: #333;
       margin: 0;
       padding: 0;
     }
 
-    /* Navbar */
+    /* Navbar Styling */
     header {
-      background-color: #1e1e2f;
-      padding: 10px 0;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: rgba(30, 30, 47, 0.8);
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      z-index: 10;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     }
 
-    header .logo img {
-      max-width: 80px;
-    }
-
-    header .nav a {
-      color: #f4f4f9;
+    header .nav-link {
+      color: #fff;
       font-weight: bold;
       padding: 10px 15px;
     }
 
-    header .nav a:hover {
+    header .nav-link:hover {
       color: #00b4d8;
     }
 
-    /* Hero Section */
-    .section1 {
+    /* Hero Section with Video Background */
+    .hero {
       position: relative;
       height: 100vh;
       display: flex;
@@ -48,30 +55,47 @@
       justify-content: center;
       color: white;
       text-align: center;
-      background-color: #1e1e2f;
     }
 
-    .section1 h1 {
+    .hero video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 100%;
+      min-height: 100%;
+      z-index: 0;
+      object-fit: cover;
+      opacity: 0.6;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+    }
+
+    .hero h1 {
       font-size: 3rem;
     }
 
-    .section1 h2 {
-      font-size: 1.5rem;
-      margin-top: 10px;
+    .hero h2 {
       color: #00b4d8;
+      font-size: 1.5rem;
     }
 
-    .section1 a.button {
+    .hero a.btn {
       background-color: #00b4d8;
       color: white;
-      border: none;
       padding: 15px 30px;
       font-weight: bold;
       border-radius: 5px;
-      margin-top: 20px;
+      text-decoration: none;
     }
 
-    .section1 a.button:hover {
+    .hero a.btn:hover {
       background-color: #0056b3;
     }
 
@@ -88,10 +112,9 @@
     }
 
     .feature-block {
-      border: none;
+      background-color: rgba(255, 255, 255, 0.8);
       transition: transform 0.3s ease-in-out;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      background-color: white;
     }
 
     .feature-block:hover {
@@ -109,9 +132,16 @@
 
     /* FAQ Section */
     .faq-container {
-      background: #1e1e2f;
+      background: rgba(30, 30, 47, 0.8);
       color: white;
       padding: 60px 0;
+    }
+
+    .faq-item {
+      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
     }
 
     .faq-item .faq-question {
@@ -121,97 +151,17 @@
     }
 
     .faq-item .faq-answer {
+      display: none;
+      padding-top: 10px;
       color: white;
     }
 
-    /* Footer */
+    /* Footer Styling */
     footer {
-      background-color: #1e1e2f;
+      background-color: rgba(30, 30, 47, 0.8);
       color: white;
       text-align: center;
       padding: 20px 0;
-    }
-
-    /* Sidebar and Chatbot Styling */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      right: -300px;
-      width: 300px;
-      height: 100vh;
-      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-      transition: right 0.3s ease;
-      z-index: 1000;
-      color: #fff;
-      background-color: #1e1e2f;
-      overflow-y: auto;
-    }
-
-    .sidebar.open {
-      right: 0;
-    }
-
-    .chatbot-container {
-      width: 350px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      position: fixed;
-      bottom: 25px;
-      right: 80px;
-    }
-
-    .chat-header {
-      background-color: #00b4d8;
-      color: #fff;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .chat-body {
-      background-color: #fff;
-      height: 300px;
-      overflow-y: auto;
-      padding: 10px;
-    }
-
-    .chat-messages {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      color: black;
-    }
-
-    .outgoing p {
-      background-color: #00b4d8;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 8px;
-      max-width: 70%;
-    }
-
-    .incoming p {
-      background-color: #f0f0f0;
-      padding: 8px 12px;
-      border-radius: 8px;
-      max-width: 70%;
-    }
-
-    .faq-container {
-      margin: 25px;
-    }
-
-    .feedback-container {
-      background-color: #f9f9f9;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      max-width: 600px;
-      margin: 40px auto;
     }
   </style>
 </head>
@@ -221,30 +171,39 @@
   <!-- Navbar -->
   <header>
     <nav class="navbar navbar-expand-lg">
-      <div class="logo">
-        <a class="navbar-brand" href="#">
-          <img src="apsit.png" alt="APSIT Logo">
-        </a>
+      <div class="container">
+        <a class="navbar-brand text-white" href="#">AR APSIT</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Solutions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="signin.html">APSIT Access</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <ul class="nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Solutions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Resources</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="signin.html">APSIT Access</a>
-        </li>
-      </ul>
     </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="section1" id="hero">
-    <h1>AR APSIT</h1>
-    <h2>AR NAVIGATION SYSTEM</h2>
-    <a href="#" class="button" onclick="scrollToFeatures()">Get Started</a>
+  <section class="hero">
+    <video autoplay muted loop>
+      <source src="background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+      <h1>AR APSIT</h1>
+      <h2>AR NAVIGATION SYSTEM</h2>
+      <a href="#features" class="btn">Get Started</a>
+    </div>
   </section>
 
   <!-- Features Section -->
@@ -253,18 +212,18 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <a href="ar://" class="feature-block">
+          <a href="ar://" class="feature-block p-3 mb-4">
             <img src="ar.png" alt="AR Navigation" class="img-fluid">
-            <div class="feature-details">
+            <div class="feature-details p-3">
               <h3>AR Navigation</h3>
               <p>Seamless indoor navigation within APSIT campus with augmented reality.</p>
             </div>
           </a>
         </div>
         <div class="col-md-6">
-          <a href="https://apsitwiki.onrender.com" target="_blank" class="feature-block">
+          <a href="https://apsitwiki.onrender.com" target="_blank" class="feature-block p-3 mb-4">
             <img src="bookicon.png" alt="APSIT Wiki" class="img-fluid">
-            <div class="feature-details">
+            <div class="feature-details p-3">
               <h3>APSIT Wiki</h3>
               <p>Comprehensive resources for APSIT students at your fingertips.</p>
             </div>
@@ -276,21 +235,25 @@
 
   <!-- FAQ Section -->
   <section class="faq-container" id="faq">
-    <h2 class="text-center mb-5">Frequently Asked Questions</h2>
     <div class="container">
+      <h2 class="text-center mb-5">Frequently Asked Questions</h2>
       <div class="faq-item">
         <h3 class="faq-question">What is the AR-APSIT navigation system?</h3>
-        <div class="faq-answer">AR-APSIT navigation is an augmented reality system that helps users find their way
-          within the APSIT campus.
+        <div class="faq-answer">
+          AR-APSIT navigation is an augmented reality system that helps users find their way within the APSIT campus.
         </div>
       </div>
       <div class="faq-item">
         <h3 class="faq-question">How does the AR-APSIT navigation system work?</h3>
-        <div class="faq-answer">It uses AR technology combined with GPS to help users navigate within the campus.</div>
+        <div class="faq-answer">
+          It uses AR technology combined with GPS to help users navigate within the campus.
+        </div>
       </div>
       <div class="faq-item">
         <h3 class="faq-question">Do I need an internet connection?</h3>
-        <div class="faq-answer">Yes, an internet connection is required for real-time navigation and updates.</div>
+        <div class="faq-answer">
+          Yes, an internet connection is required for real-time navigation and updates.
+        </div>
       </div>
     </div>
   </section>
@@ -301,47 +264,16 @@
   </footer>
 
   <!-- Optional JavaScript -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <!-- Smooth Scroll Function -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function scrollToFeatures() {
-      const featuresSection = document.getElementById("features");
-      featuresSection.scrollIntoView({
-        behavior: "smooth",
-        block: "center"
+    // FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach(item => {
+      item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        answer.style.display = answer.style.display === 'none' || answer.style.display === '' ? 'block' : 'none';
       });
-    }
-
-    // Check if the user is authenticated
-    const session = window.localStorage.getItem("session");
-
-    if (session) {
-      document.getElementById('wiki-feature').style.display = 'block'; // Show APSIT-Wiki if authenticated
-      document.getElementById('logout-btn').style.display = 'block'; // Show logout button
-      document.getElementById('profile-btn').style.display = 'none'; // Hide "Are you from APSIT?"
-    } else {
-      document.getElementById('wiki-feature').style.display = 'none'; // Hide APSIT-Wiki if not authenticated
-      document.getElementById('logout-btn').style.display = 'none'; // Hide logout button
-      document.getElementById('profile-btn').style.display = 'block'; // Show "Are you from APSIT?"
-    }
-
-    // Function to handle logout
-    function logout() {
-      // Clear the session from local storage
-      window.localStorage.removeItem("session");
-
-      // Redirect the user to signin.html
-      window.location.href = "signin.html";
-    }
-
-    // Toggle the chatbot visibility
-    function toggleChatbot() {
-      const chatbox = document.getElementById("chatbox");
-      chatbox.style.display = chatbox.style.display === "none" ? "flex" : "none";
-    }
+    });
   </script>
 
 </body>
