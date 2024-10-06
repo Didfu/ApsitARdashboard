@@ -5,160 +5,146 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
-
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   <link rel="stylesheet" href="style.css">
-
-  <!-- Google Fonts - Material Symbols -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
-  <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
-  <!-- Navigation Section -->
-  <header class="bg-light p-3">
-    <div class="container d-flex justify-content-between align-items-center">
-      <a href="/" target="_blank" class="navbar-brand">
-        <img src="apsit.png" alt="ailogo" class="img-fluid" style="max-height: 60px;">
-      </a>
-      <nav>
-        <ul class="nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarSolutions" role="button" data-bs-toggle="dropdown">Solutions</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Overview</a></li>
-              <li><a class="dropdown-item" href="#">IndoorMaps</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarResources" role="button" data-bs-toggle="dropdown">Resources</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#" onclick="scrollToFeatures()">FAQ</a></li>
-              <li><a class="dropdown-item" href="#">Community</a></li>
-              <li><a class="dropdown-item" href="#">Tutorials</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="logout-btn" style="display: none;" onclick="logout()">Logout</a>
-            <a class="nav-link" href="/signin.html" id="profile-btn">Are you from APSIT?</a>
-          </li>
-        </ul>
-      </nav>
+  <!-- Header Section -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/" target="_blank">
+      <img src="apsit.png" alt="ailogo" style="cursor: pointer;" class="img-fluid" width="100">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Solutions</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Overview</a>
+            <a class="dropdown-item" href="#">IndoorMaps</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="resourcesDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Resources</a>
+          <div class="dropdown-menu" aria-labelledby="resourcesDropdown">
+            <a class="dropdown-item" href="#" onclick="scrollToFeatures()">FAQ</a>
+            <a class="dropdown-item" href="#">Community</a>
+            <a class="dropdown-item" href="#">Tutorials</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" id="logout-btn" style="display: none;" onclick="logout()" class="nav-link">Logout</a>
+          <a href="/signin.html" id="profile-btn" class="nav-link">Are you from APSIT?</a>
+        </li>
+      </ul>
     </div>
-  </header>
+  </nav>
 
-  <!-- Hero Section -->
-  <section class="bg-primary text-white text-center py-5">
+  <!-- Main Section -->
+  <section class="text-center py-5 bg-primary text-white">
     <div class="container">
       <h1>AR APSIT</h1>
       <h2>AR NAVIGATION SYSTEM</h2>
-      <a href="#" class="btn btn-light mt-3" onclick="scrollToFeatures()">Get Started</a>
+      <a href="#" class="btn btn-light btn-lg mt-4" onclick="scrollToFeatures()">Get Started</a>
     </div>
   </section>
 
   <!-- Features Section -->
-  <section class="py-5" id="features">
-    <div class="container text-center">
-      <h2>Our Features</h2>
-      <p>AR-APSIT.ai offers a wide range of features to enhance your indoor experience.</p>
+  <section id="features" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Our Features</h2>
+      <p class="text-center">AR-APSIT.ai offers a wide range of features to enhance your indoor experience.</p>
+
       <div class="row">
-        <!-- AR Navigation Feature -->
-        <div class="col-md-6">
-          <a href="ar://" class="card h-100 text-decoration-none text-dark">
-            <img src="ar.png" class="card-img-top" alt="AR Navigation">
+        <div class="col-md-6 mb-4">
+          <a href="ar://" class="card">
+            <img src="ar.png" alt="ar" class="card-img-top img-fluid">
             <div class="card-body">
-              <h3>AR NAVIGATION</h3>
+              <h3 class="card-title">AR NAVIGATION</h3>
               <p>The AR Navigation System is designed to enhance navigation within the college premises.</p>
             </div>
           </a>
         </div>
-        <!-- APSIT-Wiki Feature (Shown only if authenticated) -->
-        <div class="col-md-6" id="wiki-feature" style="display: none;">
-          <a href="https://apsitwiki.onrender.com" target="_blank" class="card h-100 text-decoration-none text-dark">
-            <img src="bookicon.png" class="card-img-top" alt="APSITWiki">
+
+        <div class="col-md-6 mb-4" id="wiki-feature" style="display: none;">
+          <a href="https://apsitwiki.onrender.com" target="_blank" class="card">
+            <img src="bookicon.png" alt="apsitwiki" class="card-img-top img-fluid">
             <div class="card-body">
-              <h3>APSIT-WIKI</h3>
+              <h3 class="card-title">APSIT-WIKI</h3>
               <p>APSITwiki is an online platform dedicated to providing academic resources for APSIT students.</p>
             </div>
           </a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Chatbot Section -->
-  <div class="fixed-bottom mb-3 me-3" id="chatbot-container" style="display: none;">
-    <div class="card shadow-lg">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h2 class="mb-0">AR ChatBot</h2>
-        <button class="btn-close" id="close-btn"></button>
-      </div>
-      <div class="card-body">
-        <ul id="chatbox" class="list-unstyled"></ul>
-        <div class="recommended-topics mt-3">
-          <div class="d-flex justify-content-between align-items-center">
+      <!-- Chatbot Button -->
+      <button id="chatbot-toggler" class="btn btn-primary position-fixed" style="bottom: 20px; right: 20px;">
+        <span class="material-symbols-outlined">smart_toy</span>
+      </button>
+
+      <!-- Chatbot Container -->
+      <div class="chatbot-container p-3 bg-light shadow" id="chatbot-container" style="display: none; position: fixed; bottom: 80px; right: 20px; width: 300px;">
+        <div class="chat-header d-flex justify-content-between align-items-center">
+          <h2>AR ChatBot</h2>
+          <button class="close" id="close-btn">&times;</button>
+        </div>
+        <div class="chat-body">
+          <ul id="chatbox" class="list-unstyled chat-messages"></ul>
+          <div class="recommended-topics mt-3">
             <h4>Recommended Topics</h4>
-            <button id="refresh-btn" class="btn btn-outline-secondary">&#x21bb;</button>
+            <button id="refresh-btn" class="btn btn-sm btn-secondary">&#x21bb;</button>
+            <ul id="recommended-questions" class="list-unstyled mt-2"></ul>
           </div>
-          <ul id="recommended-questions" class="list-unstyled"></ul>
+        </div>
+        <div class="chat-footer mt-3">
+          <input type="text" id="user-message" placeholder="Ask a question..." class="form-control">
+          <button id="send-btn" class="btn btn-primary btn-block mt-2"><span class="material-symbols-outlined">send</span></button>
         </div>
       </div>
-      <div class="card-footer d-flex">
-        <input type="text" id="user-message" class="form-control me-2" placeholder="Ask a question...">
-        <button id="send-btn" class="btn btn-primary"><span class="material-symbols-outlined">send</span></button>
-      </div>
     </div>
-  </div>
-  <button id="chatbot-toggler" class="btn btn-primary position-fixed bottom-0 end-0 mb-4 me-4">
-    <span class="material-symbols-outlined">smart_toy</span>
-  </button>
+  </section>
 
   <!-- FAQ Section -->
-  <section class="py-5 bg-light">
+  <section id="faq" class="bg-dark text-white py-5">
     <div class="container">
-      <h2 class="text-center"><strong>FAQ</strong></h2>
+      <h2 class="text-center mb-5">FAQ</h2>
       <div class="accordion" id="faqAccordion">
-        <div class="accordion-item">
-          <h3 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-              Q1: What is the AR-APSIT navigation system?
-            </button>
-          </h3>
-          <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">A1: The AR-APSIT navigation system is an augmented reality solution designed to enhance navigation experiences in various environments.</div>
+        <div class="card bg-light text-dark mb-3">
+          <div class="card-header" id="faqHeading1">
+            <h5 class="mb-0">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                Q1: What is the AR-APSIT navigation system?
+              </button>
+            </h5>
+          </div>
+          <div id="faqCollapse1" class="collapse show" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
+            <div class="card-body">
+              A1: The AR-APSIT navigation system is an augmented reality solution designed to enhance navigation experiences in various environments...
+            </div>
           </div>
         </div>
-
-        <div class="accordion-item">
-          <h3 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-              Q2: How does the AR-APSIT navigation system work?
-            </button>
-          </h3>
-          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">A2: The system uses a combination of GPS, sensors, and AR technology to provide navigation instructions overlaid on the real-world view.</div>
-          </div>
-        </div>
-        <!-- Additional FAQs can follow the same structure -->
+        <!-- Repeat FAQ item as needed -->
       </div>
     </div>
+    <p class="text-center mt-5">&copy; 2024 AR-APSIT.ai All rights reserved.</p>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white text-center py-3">
-    <p>&copy; 2024 AR-APSIT.ai. All rights reserved.</p>
-  </footer>
-
-  <!-- Bootstrap JS and dependencies -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+  <!-- Bootstrap JS and Dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    // Add JavaScript functionality (session check, chatbot, etc.) here
+    // Same JavaScript logic as before for handling authentication, chatbot, and FAQ
   </script>
 </body>
 
