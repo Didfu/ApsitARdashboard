@@ -1,5 +1,4 @@
 // Check if the user is authenticated
-
 const session = window.localStorage.getItem("session");
 
 if (session) {
@@ -28,6 +27,11 @@ const chatbotContainer = document.getElementById("chatbot-container");
 const chatbotToggler = document.getElementById("chatbot-toggler");
 const closeBtn = document.getElementById("close-btn");
 
+let micActive = false;
+const recognition = new (window.SpeechRecognition ||
+  window.webkitSpeechRecognition)();
+recognition.lang = "en-US";
+recognition.interimResults = false;
 
 // Clear chat history on page reload
 const loadChatHistory = () => {
@@ -81,6 +85,10 @@ const handleBotResponse = (message) => {
       minute: "2-digit",
     });
     addChatMessage(botResponse, "incoming", timestamp);
+
+    if (!micActive) {
+      responsiveVoice.speak(botResponse);
+    }
   }, 1000);
 };
 
@@ -134,6 +142,12 @@ const getBotResponse = (message) => {
   };
   return responses[message.toLowerCase()] || "Please visit the Reception";
 };
+
+// Handle microphone input
+recognition.addEventListener("result", (event) => {
+  const transcript = event.results[0][0].transcript;
+  sendMessage(transcript);
+});
 
 // Send button event listener
 sendBtn.addEventListener("click", () => {
